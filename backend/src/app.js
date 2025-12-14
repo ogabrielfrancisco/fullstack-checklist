@@ -27,3 +27,6 @@ sequelize.sync()
 app.listen(3000, () => {
 console.log('Servidor rodando na porta 3000')
 })
+
+const authRoutes = require('./routes/auth.routes')
+app.use('/auth', authRoutes)
