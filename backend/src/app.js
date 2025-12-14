@@ -13,6 +13,16 @@ app.get('/', (req, res) => {
 res.json({ message: 'API rodando' })
 })
 
+const sequelize = require('./database/sequelize')
+const User = require('./models/User')
+const ChecklistItem = require('./models/ChecklistItem')
+
+
+User.hasMany(ChecklistItem)
+ChecklistItem.belongsTo(User)
+
+
+sequelize.sync()
 
 app.listen(3000, () => {
 console.log('Servidor rodando na porta 3000')
