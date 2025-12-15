@@ -1,1 +1,8 @@
-<p>register works!</p>
+<h2>Cadastro</h2>
+
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <input formControlName="name" placeholder="Nome" />
+  <input formControlName="email" placeholder="Email" />
+  <input type="password" formControlName="password" placeholder="Senha" />
+  <button type="submit">Cadastrar</button>
+</form>
