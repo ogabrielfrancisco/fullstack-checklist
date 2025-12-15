@@ -1,12 +1,15 @@
-const { DataTypes } = require('sequelize')
-const sequelize = require('../database/sequelize')
+module.exports = (sequelize, DataTypes) => {
+  const User = sequelize.define('User', {
+    name: DataTypes.STRING,
+    email: DataTypes.STRING,
+    password: DataTypes.STRING
+  })
 
+  User.associate = (models) => {
+    User.hasMany(models.Checklist, {
+      foreignKey: 'userId'
+    })
+  }
 
-const User = sequelize.define('User', {
-name: DataTypes.STRING,
-email: DataTypes.STRING,
-password: DataTypes.STRING
-})
-
-
-module.exports = User
+  return User
+}
