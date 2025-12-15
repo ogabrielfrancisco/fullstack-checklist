@@ -1,1 +1,20 @@
-<p>checklist works!</p>
+<h2>Checklist</h2>
+
+<button (click)="auth.logout()">Sair</button>
+
+<br /><br />
+
+<input [(ngModel)]="titulo" placeholder="Novo item" />
+<button (click)="add()">Adicionar</button>
+
+<ul>
+  <li *ngFor="let item of items">
+    <input
+      type="checkbox"
+      [checked]="item.concluido"
+      (change)="toggle(item)"
+    />
+    {{ item.titulo }}
+    <button (click)="remove(item.id)">X</button>
+  </li>
+</ul>
